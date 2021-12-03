@@ -26,9 +26,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/v*/registration/**")
                 .permitAll()
+                .antMatchers("/index").permitAll()
+                .antMatchers("/adminpage").permitAll()
+                .antMatchers("/otpVerification").permitAll()
+                .antMatchers("/dashboard").permitAll()
+                .antMatchers("/output").permitAll()
+                .antMatchers("/parkingsearchresult").permitAll()
                 .anyRequest()
                 .authenticated().and()
-                .formLogin();
+                .formLogin()
+                .defaultSuccessUrl("/dashboard");
     }
 
     @Override
